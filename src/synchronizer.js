@@ -11,6 +11,12 @@ dayjs.locale('fr')
 
 const postTemplate = hbs.compile(fs.readFileSync(`${__dirname}/post-template.hbs`,"utf8"))
 
+/**
+ * Synchronise les projets
+ * Résolution de la promess à la fin de la procédure
+ *
+ * @return {Promise<void>}
+ */
 async function syncProjects(){
 
 	let changes = await getRequiredChanges()
@@ -64,6 +70,11 @@ async function syncProjects(){
 
 }
 
+/**
+ * Renvoie les ajouts nécéssaire qui seront éfféctués durant la synchronisation
+ *
+ * @return {Promise<{posts: Array, tags: Array}>}
+ */
 async function getRequiredChanges(){
 
 	let projects = await projectsApi.getAllProjects()

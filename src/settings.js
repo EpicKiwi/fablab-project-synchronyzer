@@ -8,11 +8,19 @@ const settings = {
 	BETWEEN_SYNC_TIME: process.env.BETWEEN_SYNC_TIME || 7200
 }
 
+/**
+ * Renvoie le nom des paramètres manquants
+ *
+ * @return {string[]}
+ */
 function getMissingSettings(){
 	let missing = Object.keys(settings).filter(key => ! settings[key])
 	return missing
 }
 
+/**
+ * Vérifie que tout les paramètres disposent d'une valeur ou quitte le programme avec un message d'érreur
+ */
 function requireFullConfig(){
 	let missingKeys = getMissingSettings()
 	if(missingKeys.length > 0){
