@@ -138,6 +138,15 @@ Exemple de réponse :
 }
 ```
 
+## Documentation de référence
+
+Une documentation du code à l'échelle de la fonction est disponible et inclue sous forme de [JSDoc](https://jsdoc.app/). Il est possible de générer une documentaiton web avec la commande suivante :
+```bash
+npm run doc
+```
+
+La documentation est générée dans le dossier `doc`.
+
 ## Modèles de présentation
 
 Il existe deux modèles utilisés pour la syncronisation. Ces modèles utilisent le modèle de moteur de template [Handlebars](https://handlebarsjs.com/).
