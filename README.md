@@ -39,7 +39,7 @@ npm install
 Définir les variables d'environnement de configuration
 
 ```bash
-GHOST_URL="http://localhost:2368
+GHOST_URL="http://localhost:2368"
 GHOST_ADMIN_API_KEY="asdfasdfasdf"
 SYNC_PASSWORD="azerty"
 ```
