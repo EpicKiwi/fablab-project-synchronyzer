@@ -2,11 +2,11 @@
   "name": "fablab-project-synchronyzer",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "start": "node .",
     "dev": "nodemon . -e hbs",
-    "sync": "node sync.js",
+    "sync": "node src/sync.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

@@ -2,8 +2,8 @@ const settings = {
 	GHOST_URL: process.env.GHOST_URL,
 	GHOST_ADMIN_API_KEY: process.env.GHOST_ADMIN_API_KEY,
 	SYNC_PASSWORD: process.env.SYNC_PASSWORD,
-	DB_LOCATION: process.env.DB_LOCATION || `${__dirname}/var/db.sqlite`,
-	PICTURES_BASEPATH: process.env.PICTURES_BASEPATH || `${__dirname}/var`,
+	DB_LOCATION: process.env.DB_LOCATION || `var/db.sqlite`,
+	PICTURES_BASEPATH: process.env.PICTURES_BASEPATH || `var`,
 	PORT: process.env.PORT || 8080,
 	BETWEEN_SYNC_TIME: process.env.BETWEEN_SYNC_TIME || 7200
 }
