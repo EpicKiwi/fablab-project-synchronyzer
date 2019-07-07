@@ -19,7 +19,7 @@ docker build . -t epickiwi/fablab-sync
 
 Démarrez du container avec les variable d'environnement de configuration
 ```bash
-docker run -d --name fablab-sync -e GHOST_URL=http://ghost:2368 -e GHOST_ADMIN_API_KEY=asdfasdfasdf -e SYNC_PASSWORD=azerty -p 8080:8080 epickiwi/fdablab-sync
+docker run -d --name fablab-sync -e GHOST_URL=http://ghost:2368 -e GHOST_ADMIN_API_KEY=asdfasdfasdf -e SYNC_PASSWORD=azerty -p 8080:8080 epickiwi/fablab-sync
 ```
 
 Les sources sont présentes dans le dossier `/sync` et les données sont dans `/sync/var` il faut monter ce dernier dossier vers la base de données SQlite.
