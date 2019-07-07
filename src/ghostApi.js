@@ -1,11 +1,18 @@
 const GhostAdminAPI = require("@tryghost/admin-api")
 
 /**
- * Classe singleton de l'API cliente Ghost
+ * Classe singleton de l'API client Ghost
+ *
+ * @hideconstructor
  */
 class GhostApi {
 
 	constructor(){
+        /**
+		 * API Client ghost
+		 * @name GhostApi#api
+         * @type GhostAdminAPI
+         */
 		this.api = null
 	}
 

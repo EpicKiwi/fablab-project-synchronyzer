@@ -1,3 +1,8 @@
+/**
+ * Script de démarrage d'un serveur de syncronisation
+ * @module
+ */
+
 const express = require("express")
 const settings = require("./settings")
 const ghostApi = require("./ghostApi")

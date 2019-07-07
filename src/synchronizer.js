@@ -1,3 +1,9 @@
+/**
+ * Module de syncronisation des projets
+ * @module
+ * @type {{syncProjects,getRequiredChanges}}
+ */
+
 const ghostApi = require("./ghostApi")
 const projectsApi = require("./projectsApi")
 const settings = require("./settings")

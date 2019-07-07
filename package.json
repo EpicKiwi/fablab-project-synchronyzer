@@ -7,7 +7,8 @@
     "start": "node .",
     "dev": "nodemon . -e hbs",
     "sync": "node src/sync.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "doc": "jsdoc src --destination doc --readme README.md"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,7 @@
     "sqlite3": "^4.0.9"
   },
   "devDependencies": {
+    "jsdoc": "^3.6.2",
     "nodemon": "^1.19.1"
   }
 }

@@ -137,3 +137,75 @@ Exemple de réponse :
   "mustWait": 0
 }
 ```
+
+## Modèles de présentation
+
+Il existe deux modèles utilisés pour la syncronisation. Ces modèles utilisent le modèle de moteur de template [Handlebars](https://handlebarsjs.com/).
+
+### Modèles de post
+
+Le modèle de post est le modèle permettant de créer la présentation d'un article sur la base d'un post. Il se situe dans le fichier `post-template.hbs`.
+
+Les données utilisables dans ce modèle sont les suivantes :
+```json
+{
+  "id": 1,
+  "type": { 
+        "id": 1,
+        "acronym": "AZ",
+        "name": "Azerty",
+    },
+  "name": "azerty",
+  "centre_id": 1,
+  "centre": {
+        "id": 1,
+        "region": "SE",
+        "name": "Lyon",
+    },
+  "short_description": "azertyazerty",
+  "huge_description": "azertyuiopqsdfghjklmwxcvbvn",
+  "documentation": "http://localhost:8080/doc",
+  "creation_date": Date,
+  "end_date": Date,
+  "picture": "df/er/fr.png",
+}
+```
+
+### Modèle de page
+
+Le modèle de page représente la page HTML envoyée lors de la l'arrivée d'une requète à la racine du serveur.
+
+Les données utilisables dans ce modèle sont les suivantes :
+```json
+{
+  "changes": {
+               "add": {
+                 "posts": [
+                   {
+                     "id": 1,
+                     "name": "azerty",
+                     "centre_id": 1,                     "short_description": "azertyazerty",
+                     "huge_description": "azertyuiopqsdfghjklmwxcvbvn",
+                     "documentation": "http://localhost:8080/doc",
+                     "creation_date": Date,
+                     "end_date": Date,
+                     "picture": "df/er/fr.png",
+                   }
+                 ],
+                 "tags": [
+                   "Projet Personnel",
+                   "Projet Innovation",
+                   "Nice",
+                   "Projet #1"
+                 ]
+               }
+             },
+  "cantSync": true,
+  "lastSync": Date,
+  "relativeLastSync": "il y a 2 minutes",
+  "mustWait": 1762
+}
+```
+
+* `mustwait` : est le temps (en ms) nécéssaire d'attendre avant la prochaine syncronisation
+* `cantSync` : est à true si il est impossible de syncroniser

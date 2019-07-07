@@ -1,3 +1,9 @@
+/**
+ * Script de gestion des paramètres de l'application
+ * @module
+ * @type {{GHOST_ADMIN_API_KEY: string, PORT: number, GHOST_URL: string, SYNC_PASSWORD: string, PICTURES_BASEPATH: string, BETWEEN_SYNC_TIME: number, DB_LOCATION: string}}
+ */
+
 const settings = {
 	GHOST_URL: process.env.GHOST_URL,
 	GHOST_ADMIN_API_KEY: process.env.GHOST_ADMIN_API_KEY,

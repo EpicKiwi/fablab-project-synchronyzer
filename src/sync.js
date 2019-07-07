@@ -1,3 +1,8 @@
+/**
+ * Script synchronisant les données maintenant
+ * @module
+ */
+
 const settings = require("./settings")
 const ghostApi = require("./ghostApi")
 const projectsApi = require("./projectsApi")

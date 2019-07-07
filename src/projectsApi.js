@@ -3,11 +3,18 @@ const util = require("util")
 
 /**
  * Le singleton de l'API des projets dans la base de données SQLite
+ * @hideconstructor
  */
 class ProjectsApi {
 
 
 	constructor(){
+        /**
+         * Base de données SQlite chargée
+         *
+         * @name ProjectsApi#sqlite
+         * @type sqlite3.Database
+         */
 		this.sqlite = null
 	}
 
