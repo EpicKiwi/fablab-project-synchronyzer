@@ -1,0 +1,32 @@
+{
+  "name": "fablab-project-synchronyzer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon . -e hbs",
+    "sync": "node sync.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EpicKiwi/fablab-project-synchronyzer.git"
+  },
+  "author": "EpicKiwi <me@epickiwi.fr>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/EpicKiwi/fablab-project-synchronyzer/issues"
+  },
+  "homepage": "https://github.com/EpicKiwi/fablab-project-synchronyzer#readme",
+  "dependencies": {
+    "@tryghost/admin-api": "latest",
+    "dayjs": "^1.8.14",
+    "express": "^4.17.1",
+    "handlebars": "^4.1.2",
+    "sqlite3": "^4.0.9"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}

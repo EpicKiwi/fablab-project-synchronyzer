@@ -1,0 +1,27 @@
+<p>{{short_description}}</p>
+
+<p>
+	<ul>
+
+		<li> <b>Type de projet : </b> {{type.name}} </li>
+
+		{{#if centre}}
+			<li> <b>Centre : </b> {{centre.name}} </li>	
+		{{/if}}
+
+		{{#if creation_date}}
+			<li> <b>Débuté le : </b> {{creation_date}} </li>
+		{{/if}}
+
+		{{#if end_date}}
+			<li> <b>Terminé le : </b> {{end_date}} </li>
+		{{/if}}
+
+	</ul>
+<p>
+
+<p>{{huge_description}}<p>
+
+{{#if documentation}}
+	<i>Retrouvez la documentation de ce projet à l'addresse <a href="{{documentation}}" >{{documentation}}</a></i>
+{{/if}}

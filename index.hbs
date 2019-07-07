@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Synchronisation des projets</title>
+</head>
+<style type="text/css">
+
+	* {
+		margin: 0;
+		padding: 0;
+		font-family: sans-serif;
+		color: #565656;
+        box-sizing: border-box;
+	}
+
+	body {
+		width: 100vw;
+		min-height: 100vh;
+        padding: 50px;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.main-card {
+		width: 60vw;
+		padding: 25px;
+		border-radius: 25px;
+		background: white;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+	}
+
+	.main-card h1 {
+		color: #fc523f;
+		font-weight: normal;
+		text-align: center;
+        margin-bottom: 25px;
+	}
+
+	.changes {
+		min-height: 300px;
+		width: 70%;
+		margin: auto;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+	}
+
+	.changes h3 {
+		margin-bottom: 15px;
+		margin-top: 15px;
+		color: #fc523f;
+		font-weight: normal;
+	}
+
+	.changes ul {
+		margin-left: 25px;
+	}
+
+	.noting-to-do {
+		text-align: center;
+		opacity: 0.5;
+	}
+
+	.last-sync {
+		text-align: center;
+		font-style: italic;
+		font-size: 12px;
+		opacity: 0.5;
+	}
+
+	.sync-form {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+        margin-top: 25px;
+        margin-bottom: 10px;
+	}
+
+	.sync-form input, .sync-form button {
+		margin: 0;
+		border: 2px solid  #fc523f;
+		padding: 7px;
+		background-color: transparent;
+	}
+
+	.sync-form input {
+		border-radius: 5px 0 0 5px;
+	}
+
+	.sync-form button {
+		border-radius: 0 5px 5px 0;
+		border-left: none;
+		background: #fc523f;
+		color: white;
+	}
+
+    .form-error {
+        color: red;
+        font-size: 13px;
+        font-style: italic;
+        text-align: center;
+    }
+
+	.overlay {
+		background: rgba(255,255,255,0.8);
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		font-size: 20px;
+		color: rgba(0,0,0,0.8);
+	}
+
+	.overlay:not(.active){
+		display: none;
+	}
+
+</style>
+<body>
+
+<section class="main-card">
+
+	<h1>Synchronisation des projets</h1>
+
+	<div class="changes nothing">
+
+		{{#if changes.tags.length}}
+		<h3>Tags à ajouter</h3>
+		<ul>
+			{{#each changes.tags}}
+			<li>{{.}}</li>
+			{{/each}}
+		</ul>
+		{{/if}}
+
+		{{#if changes.posts.length}}
+		<h3>Projets à publier</h3>
+		<ul>
+			{{#each changes.posts}}
+			<li>{{name}}</li>
+			{{/each}}
+		</ul>
+		{{/if}}
+
+
+		{{#unless changes.tags.length}}
+			{{#unless changes.posts.length}}
+				<h3 class="noting-to-do" >Rien à faire</h3>
+			{{/unless}}
+		{{/unless}}
+
+	</div>
+
+	<form class="sync-form" id="sync-form">
+		<input type="password" id="password-field" placeholder="Mot de passe" required />
+		<button>Synchroniser</button>
+
+		<div class="overlay {{#if cantSync}}active{{/if}}" id="overlay" >
+
+			Impossible de synchroniser maintenant,<br>
+			revenez plus tard...
+
+		</div>
+
+	</form>
+    <div class="form-error" id="form-error"></div>
+
+	{{#if lastSync}}
+		<p class="last-sync">
+			Dernière synchronisation {{relativeLastSync}} le {{lastSync}}
+		</p>
+	{{/if}}
+
+</section>
+
+<script>
+
+    let form = document.getElementById("sync-form")
+    let formError = document.getElementById("form-error")
+    let passwordField = document.getElementById("password-field")
+    let overlay = document.getElementById("overlay")
+
+    form.addEventListener("submit",async e => {
+        e.preventDefault()
+        formError.innerHTML = ""
+
+        let password = passwordField.value
+
+        let response = await fetch("/api/sync",{
+            headers: {
+                Authorization: btoa(password)
+            }
+        })
+
+        if(! response.ok){
+            let bodyResponse = await response.json()
+            formError.innerHTML = bodyResponse.error || response.statusText
+            return
+        }
+
+        setMessage("Syncronisation en cours...")
+
+        checkStatus()
+
+    })
+
+    async function checkStatus(){
+
+        let result = await fetch("/api/progression")
+        let bodyResponse = await result.json()
+
+        switch(bodyResponse.state){
+            case "error":
+                setMessage("Erreur de synchronisation")
+                formError.innerHTML = bodyResponse.syncError
+                break;
+            case "ended":
+                setMessage("Syncronisation terminée")
+                return
+            default:
+                setMessage("Syncronisation en cours...")
+                return setTimeout(checkStatus,1000)
+        }
+    }
+
+    function setMessage(message){
+        overlay.classList.add("active")
+        overlay.innerHTML = message
+    }
+
+</script>
+
+</body>
+</html>
