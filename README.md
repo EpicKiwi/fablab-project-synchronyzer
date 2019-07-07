@@ -182,7 +182,7 @@ Les données utilisables dans ce modèle sont les suivantes :
 
 ### Modèle de page
 
-Le modèle de page représente la page HTML envoyée lors de la l'arrivée d'une requète à la racine du serveur.
+Le modèle de page représente la page HTML envoyée lors de la l'arrivée d'une requète à la racine du serveur. Ce modèle est disponible dans le fichier `index.hbs`.
 
 Les données utilisables dans ce modèle sont les suivantes :
 ```json
