@@ -62,7 +62,7 @@ Les différentes variables d'environnement disponibles sont les suivantes :
 * `DB_LOCATION` : Emplacement de la base de données SQlite **[Par défaut : `var/db.sqlite`]**
 * `PICTURES_BASEPATH` : Emplacement du dossier contenant les images **[Par défaut : `var`]**
 * `PORT` : Port d'écoute de l'application **[Par défaut : `8080`]**
-* `BETWEEN_SYNC_TIME` : Temps minimum entre deux synchronisations (en ms) **[Par défaut : `7200` (2h)]**
+* `BETWEEN_SYNC_TIME` : Temps minimum entre deux synchronisations (en s) **[Par défaut : `7200` (2h)]**
 
 ## API
 
