@@ -22,13 +22,13 @@
   "homepage": "https://github.com/EpicKiwi/fablab-project-synchronyzer#readme",
   "dependencies": {
     "@tryghost/admin-api": "latest",
-    "dayjs": "^1.8.14",
+    "dayjs": "^1.8.15",
     "express": "^4.17.1",
     "handlebars": "^4.1.2",
     "sqlite3": "^4.0.9"
   },
   "devDependencies": {
-    "jsdoc": "^3.6.2",
+    "jsdoc": "^3.6.3",
     "nodemon": "^1.19.1"
   }
 }
