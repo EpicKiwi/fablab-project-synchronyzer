@@ -194,7 +194,7 @@
 
         let password = passwordField.value
 
-        let response = await fetch("/api/sync",{
+        let response = await fetch("api/sync",{
             headers: {
                 Authorization: btoa(password)
             }
@@ -214,7 +214,7 @@
 
     async function checkStatus(){
 
-        let result = await fetch("/api/progression")
+        let result = await fetch("api/progression")
         let bodyResponse = await result.json()
 
         switch(bodyResponse.state){
