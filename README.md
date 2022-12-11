@@ -2,6 +2,7 @@
 
 > Système de synchronisation des projets du FabLab Sur le blog [Ghost](https://ghost.org/) depuis une base de donnée SQlite
 
+> Le projet n'est plus maintenu et je n'ai plus de contact avec le Fablab du CESI. Contactez moi si vous désirez récuperer le projet
 
 ## Installation
 
